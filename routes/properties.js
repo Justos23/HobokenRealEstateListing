@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const properties = require('../properties');
+const data = require('../data');
 const propertiesData = data.properties;
 
 
