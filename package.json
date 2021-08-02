@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Justos23/HobokenRealEstateListing#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongodb": "^4.0.0"
+    "mongodb": "^4.0.0",
+    "uuid": "^8.3.2"
   }
 }

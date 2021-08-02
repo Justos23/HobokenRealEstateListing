@@ -13,28 +13,26 @@ const exportedMethods = {
         return user;
       },
 
-    async CreateUser(user, username, email, phone_number, age, hashedpassword) {
-        if (typeof user.userFirstName !== 'string') throw 'You need to provide a valid first name';
-        if (typeof user.userLastName !== 'string') throw 'You need to provide a valid last name';
+    async CreateUser(userFirstName, userLastName, username, hashedPassword, email, phoneNumber, age) {
+        if (typeof userFirstName !== 'string') throw 'You need to provide a valid first name';
+        if (typeof userLastName !== 'string') throw 'You need to provide a valid last name';
         if (typeof username !== 'string') throw 'You need to provide a valid username';
         if (typeof email !== 'string') throw 'You need to provide a valid email';
-        if (typeof phone_number !== 'string') throw 'You need to provide a valid phone number';
+        if (typeof phoneNumber !== 'string') throw 'You need to provide a valid phone number';
         if (typeof age !== 'number') throw 'You need to provide a valid age';
-        if (typeof hashedpassword !== 'string') throw 'Invalid password';
+        if (typeof hashedPassword !== 'string') throw 'Invalid password';
     
     
         const userCollection = await users();
     
         const newUser = {
-          user: { 
-            userFirstName:user.userFirstName, 
-            userLastName:user.userLastName
-          },
+          userFirstName:userFirstName, 
+          userLastName: userLastName,
           username: username,
+          hashedPassword: hashedPassword,
           email: email,
-          phone_number: phone_number,
+          phoneNumber: phoneNumber,
           age: age,
-          hashedpassword: hashedpassword,
           properties: [],
           favorites: [],
           comments: [],
