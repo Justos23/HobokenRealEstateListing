@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{{title}}}</title>
+    <link rel="stylesheet" href="/public/site.css">
+</head>
+<body>
+    <header id="header">
+        <div class="name-logo">
+            <img src="/public/site_logo.png" width="50" height="50">
+            <h1 class="name">Hoboken Real Estate</h1>
+        </div>
+        <nav>
+            <button class=".nav-left" type="button">Sell a property</button>
+            <button class=".nav-left" type="button">Buy a property</button>
+            <form method= "POST" action="/search" id="search">
+                <input class=".nav-right" type="text" id="search" placeholder="Search"/>
+                <input class=".nav-right" type="submit" id="search" value="Submit">       
+            </form>
+            <a href="/users/login" class=".nav-right"><i class="fas fa-user"></i></a>
+        </nav>   
+    </header>
+    <main>
+        {{{body}}}
+    </main>
+    <footer id="footer">CS-546-Project</footer>
+    <script src="https://kit.fontawesome.com/48c3b86a8b.js" crossorigin="anonymous"></script>
+</body>
+</html>

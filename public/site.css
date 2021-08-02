@@ -1,0 +1,54 @@
+*{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+body{
+    padding: 50px;
+    height: 100%;
+}
+
+main{
+    padding: 50px;
+    background-color: #e0dcd8;
+    
+}
+
+
+#footer {
+    position: absolute;
+    left:0;
+    bottom: 0;
+    width: 100%;
+    /* Height of the footer*/ 
+    height: 40px;
+    background: grey;
+    text-align: center;
+}
+
+.name-logo{
+    display: flex;
+}
+
+.name{
+    padding-left: 20px;
+}
+
+.nav-left{
+    float: left;
+}
+
+.nav-right{
+    float: right;
+}
+
+nav{
+    display: flex;
+    width: 100%;
+    /* Height of the footer*/ 
+    height: 40px;
+    background: grey;
+}
+
+.map{
+    text-align: center;
+}

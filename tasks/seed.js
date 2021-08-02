@@ -15,7 +15,7 @@ async function main() {
 
 
   //const property1 = await properties.CreateProperty("This is great", "Justin Depardieu", 5, "15/65/1849", "I enjoyed it");
-  //const review2 = await properties.CreateProperty("This is good", "Justin Depardieu", 4, "15/65/1849", "I liked it");
+  //const property2 = await properties.CreateProperty("This is good", "Justin Depardieu", 4, "15/65/1849", "I liked it");
   //const review3 = await properties.CreateProperty("This is ok", "Justin Depardieu", 3, "15/65/1849", "I seen it");
   //const review4 = await properties.CreateProperty("This is great not great", "Justin Depardieu", 2, "15/65/1849", "I did not enjoy it");
   

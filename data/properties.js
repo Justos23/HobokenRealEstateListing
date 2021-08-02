@@ -1,6 +1,6 @@
 const { ObjectId } = require('mongodb');
 const mongoCollections = require('../config/mongoCollections');
-const properties = mongoCollections.properties;
+const propertiesData = mongoCollections.properties;
 const properties = require('./properties');
 
 const exportedMethods = {
@@ -50,6 +50,5 @@ const exportedMethods = {
       },
 };
 
-};
 
 module.exports = exportedMethods;
