@@ -1,7 +1,10 @@
 const { ObjectId } = require('mongodb');
 const mongoCollections = require('../config/mongoCollections');
+
 const propertiesData = mongoCollections.properties;
 const properties = require('./properties');
+const users = require('./users');
+
 
 const exportedMethods = {
   
@@ -14,34 +17,29 @@ const exportedMethods = {
         return property;
       },
 
-    async CreateProperty(user, username, email, phone_number, propertyAttributes) {
-        if (typeof user.userFirstName !== 'string') throw 'You need to provide a valid first name';
-        if (typeof user.userLastName !== 'string') throw 'You need to provide a valid last name';
-        if (typeof username !== 'string') throw 'You need to provide a valid username';
-        if (typeof email !== 'string') throw 'You need to provide a valid email';
-        if (typeof phone_number !== 'string') throw 'You need to provide a valid phone number';
-        
+    async CreateProperty(userID, sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, address) {
+
+        if (typeof userID !== 'string') throw 'You need to provide a valid userID';
+        if (typeof sellType !== 'string') throw 'You need to state if the property is going to be either to sell or rent';
+        if (typeof homeType !== 'string') throw 'You need to provide a valid home type';
+        if (typeof price !== 'string') throw 'You need to provide a valid price';
+        if (typeof numofBedrooms !== 'number') throw 'You need to provide a valid number of bedrooms';
+        if (typeof numofBathrooms !== 'number') throw 'You need to provide a valid number of bathrooms';
+        if (typeof squareFeet !== 'number') throw 'You need to provide a valid square feet';
+        if (typeof address !== 'string') throw 'You need to provide a valid location';
+
+        const propertyCollection = await properties();
     
-    
-        const userCollection = await users();
-    
-        const newUser = {
-          user: { 
-            userFirstName:user.userFirstName, 
-            userLastName:user.userLastName
-          },
-          username: username,
-          email: email,
-          phone_number: phone_number,
-          propertiesAttributes: {
+        const newProperty = {
+            userID: userID,
             homeType: homeType,
             price: price,
             numofBedrooms: numofBedrooms,
             numofBathrooms: numofBathrooms,
-            squareFT: squareFT,
-            location: location
+            squareFeet: squareFeet,
+            address: address
           }
-        } 
+        
     
         const newInsertInformation = await propertyCollection.insertOne(newProperty);
         const newId = newInsertInformation.insertedId;
