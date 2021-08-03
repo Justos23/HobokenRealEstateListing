@@ -1,10 +1,7 @@
 const { ObjectId } = require('mongodb');
 const mongoCollections = require('../config/mongoCollections');
-
-const propertiesData = mongoCollections.properties;
-const properties = require('./properties');
+const properties = mongoCollections.properties;
 const users = require('./users');
-
 
 const exportedMethods = {
   
@@ -32,12 +29,14 @@ const exportedMethods = {
     
         const newProperty = {
             userID: userID,
+            sellType:sellType,
             homeType: homeType,
             price: price,
             numofBedrooms: numofBedrooms,
             numofBathrooms: numofBathrooms,
             squareFeet: squareFeet,
-            address: address
+            address: address,
+            pictures: [],
           }
         
     
