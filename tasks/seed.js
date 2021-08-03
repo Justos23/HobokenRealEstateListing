@@ -14,12 +14,12 @@ async function main() {
   //const user4 = await users.CreateUser({ "userFirstName": 'Alice',  "userLastName": 'Brown'}, "Alice_Brown", "Ali.Brown@gmail.com", "2015456321", 25, "asd45f1f7ggh8jd7sx4");
   //const user5 = await users.CreateUser({ "userFirstName": 'Bob',  "userLastName": 'Green'}, "Bobby", "greenbobby@gmail.com", "2017969430", 30, "s8v1j4i2f1sz541s4x1c4");
 
-  const property1 = await properties.CreateProperty("61073903f27448a80bcda79b", "Rent", "apartment", "$2,500/month", 2, 1, 900, "219 Court Street");
+  const property1 = await properties.CreateProperty("610959893e49842908a03f83", "Rent", "apartment", "$2,500/month", 2, 1, 900, "219 Court Street");
   //const review2 = await properties.CreateProperty("This is good", "Justin Depardieu", 4, "15/65/1849", "I liked it");
   //const review3 = await properties.CreateProperty("This is ok", "Justin Depardieu", 3, "15/65/1849", "I seen it");
   //const review4 = await properties.CreateProperty("This is great not great", "Justin Depardieu", 2, "15/65/1849", "I did not enjoy it");
 
-  const comment1 = await comments.CreateComment("61073903f27448a80bcda79b", "61073f1f4be2c7206a9e72d3", "The views this property offers are great!")
+  const comment1 = await comments.CreateComment("610959893e49842908a03f83", "61095a80f0131e26dce97025", "The views this property offers are great!")
   
   console.log('Done seeding database');
 
