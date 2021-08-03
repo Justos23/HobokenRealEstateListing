@@ -1,7 +1,10 @@
 const { ObjectId } = require('mongodb');
 const mongoCollections = require('../config/mongoCollections');
-const properties = mongoCollections.properties;
+
+const propertiesData = mongoCollections.properties;
+const properties = require('./properties');
 const users = require('./users');
+
 
 const exportedMethods = {
   
@@ -44,7 +47,6 @@ const exportedMethods = {
         return await this.ReadPropertyById(newId);
       },
 };
-
 
 
 module.exports = exportedMethods;
