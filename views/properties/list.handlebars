@@ -1,3 +1,15 @@
 <section class="list">
-    
+    <h2>Search Results</h2>
+    {{#if results.length}}
+        {{#each results}}
+            <div class="container">
+                <img src={{this.pictures[0].src}}>
+                <div class="top-left">{{this.address}}</div>
+                <div class="bottom-left">{{this.price}}</div>
+                <div class="bottom-right">{{this.numOfBedrooms}} Bed/{{this.numOfBathrooms}} Bath</div>
+            </div>
+        {{/each}}
+    {{else}}
+        <p class="not-found">No results found</p>
+    {{/if}}
 </section>
