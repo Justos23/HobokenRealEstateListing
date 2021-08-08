@@ -56,3 +56,7 @@ nav{
 .error{
     color: red;
 }
+
+.hidden {
+    display: none !important;
+}

@@ -10,6 +10,16 @@
         <div class="name-logo">
             <img src="/public/site_logo.png" width="50" height="50">
             <h1 class="name">Hoboken Real Estate</h1>
+        </div>
+        <div class="navbar">
+            <a href="/">Home</a>
+            <a href="/properties/new">New Listing</a>
+            <a id="profile" class="hidden" href="/users/profile">Profile</a>
+            <a id="login" href="/users/login">Login/Sign Up</a>
+            <form method= "POST" action="/search" id="search">
+                <input class=".nav-right" type="text" id="search" placeholder="Property Search"/>
+                <input class=".nav-right" type="submit" id="search" value="Submit">       
+            </form>
         </div>   
     </header>
     <main>
@@ -17,5 +27,6 @@
     </main>
     <footer id="footer">CS-546-Project</footer>
     <script src="https://kit.fontawesome.com/48c3b86a8b.js" crossorigin="anonymous"></script>
+    <script src="../../public/js/main.js"></script>
 </body>
 </html>
