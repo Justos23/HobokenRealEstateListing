@@ -1,3 +1,24 @@
-<section>
-    
+<section class="listing">
+    <h2>{{property.address}}</h2>
+    <div class="pictures">
+        {{#each property.pictures}}
+            <img class="slides" src="{{this.src}}">
+        {{/each}}
+        <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+    </div>
+    <div class="price">
+        {{#ifEquals property.sellType "rent"}}
+            <p>For Rent: {{property.price}}</p>
+        {{/if}}
+        {{#ifEquals property.sellType "sell"}}
+            <p>For Sale: {{property.price}}</p>
+        {{/if}}
+    </div>
+    <div class="info">
+        <p>Property Type: {{property.homeType}}</p>
+        <p>Bedrooms/Bathrooms: {{property.numOfBedrooms}}/{{property.numOfBathrooms}}</p>
+        <p>{{property.squareFeet}} Square Ft</p>
+    </div>
+    <script src="../../public/js/listing.js"></script>
 </section>
