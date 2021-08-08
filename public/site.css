@@ -52,3 +52,7 @@ nav{
 .map{
     text-align: center;
 }
+
+.error{
+    color: red;
+}

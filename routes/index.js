@@ -1,6 +1,7 @@
-const usersRoutes = require('./users');
+const userRoutes = require('./users');
 const propertiesRoutes = require('./properties');
 const landingRoutes = require('./landing');
+const privateRoutes = require('./private')
 
 const constructorMethod = (app) => {
 
@@ -10,9 +11,10 @@ const constructorMethod = (app) => {
     });
   });
 
-  app.use('/users', usersRoutes);
+  app.use('/users', userRoutes);
   app.use('/properties', propertiesRoutes);
-  app.use('landing', landingRoutes);
+  app.use('/landing', landingRoutes);
+  app.use('/private', privateRoutes);
 
   app.use('*', (req, res) => {
     res.status(404).json({ error: 'Error 404: Page not found' });

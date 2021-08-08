@@ -1,0 +1,31 @@
+{{#if noError}}
+<div> 
+  <h1>{{user.username}}</h1> 
+  <h1>{{user.userFirstName}}</h1> 
+  <h1>{{user.userLastName}}</h1> 
+  <h1>{{user.email}}</h1> 
+  <h1>{{user.age}}</h1> 
+  <dl>
+    <dt>Properties</dt> 
+      <dd> 
+        <ul>
+          {{#each user.properties}} 
+          <li>{{this}}</li>
+          {{/each}}
+        </ul> 
+      </dd> 
+    <dt>Favorites</dt> 
+      <dd> 
+        <ul>
+          {{#each user.favorites}} 
+          <li>{{this}}</li>
+          {{/each}}
+        </ul> 
+      </dd>  
+</div> 
+{{/if}}
+
+
+{{#if hasError}}
+<p class="not-found">{{error}}</p>
+{{/if}}
