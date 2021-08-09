@@ -1,16 +1,20 @@
-<a href="/">Home</a>
+<a href="/">&#8592; Home</a>
 <br><br>
 <h1>Login</h1>
 <br>
-<form method= "POST" action="" id="login-form">
+<form method= "POST" action="/users/login" id="login-form">
     <label>Username :
-        <input type="text" id="username" placeholder="Enter your username"/> 
+        <input type="text" name="username" id="username" placeholder="Enter your username"/> 
     </label>
     <label>Password :
-        <input type="password" id="passsword" placeholder="Enter your password"/> 
+        <input type="password" name="password" id="password" placeholder="Enter your password"/> 
     </label>
     <br><br>
    Don't have an account yet? <a href="signup">Sign up</a>
+   <br><br>
+      {{#each errors}}
+        <div class = "error">{{this}}</div>
+      {{/each}}
    <br><br>
     <input type="submit" id="submit" value="Submit">       
 </form>

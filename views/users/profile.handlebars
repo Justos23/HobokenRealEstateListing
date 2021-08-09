@@ -1,16 +1,26 @@
-{{#if noError}}
+<nav>
+    <button class=".nav-left" type="button">Sell a property</button>
+    <button class=".nav-left" type="button">Buy a property</button>
+    </nav>
 <div> 
-  <h1>{{user.username}}</h1> 
-  <h1>{{user.userFirstName}}</h1> 
-  <h1>{{user.userLastName}}</h1> 
-  <h1>{{user.email}}</h1> 
-  <h1>{{user.age}}</h1> 
+  <br>
+<a href="/"> &#8592; Home</a>
+  <br><br>
+  <h1>{{title}}</h1>
+  <p>Username: {{user.username}}</p> 
+  <p>First Name: {{user.userFirstName}}</p> 
+  <p>Last Name:{{user.userLastName}}</p> 
+  <p>Email: {{user.email}}</p> 
+  <p>Phone number: {{user.phoneNumber}}</p> 
+  <p>Age: {{user.age}}</p> 
   <dl>
     <dt>Properties</dt> 
       <dd> 
         <ul>
           {{#each user.properties}} 
           <li>{{this}}</li>
+          {{else}}
+          <p class="empty">You do not have any property to sell yet</p>
           {{/each}}
         </ul> 
       </dd> 
@@ -19,13 +29,12 @@
         <ul>
           {{#each user.favorites}} 
           <li>{{this}}</li>
+          {{else}}
+          <p class="empty">You do not have any favorites yet</p>
           {{/each}}
         </ul> 
-      </dd>  
-</div> 
-{{/if}}
+      </dd>
+<br>
+<a href="/users/logout" class="logout"  type="button">Log Out</a>
+</div>
 
-
-{{#if hasError}}
-<p class="not-found">{{error}}</p>
-{{/if}}

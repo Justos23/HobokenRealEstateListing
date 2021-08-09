@@ -1,12 +1,12 @@
 <section>
-  <a href="/">Home</a>
-<br/>
+  <a href="/">&#8592; Home</a>
+
     <h1>Sign up</h1>
 
-    <form  method="POST" action="/users/signup" id="signup-form" class="new-user-form">
+    <form  method="POST" action="/users/signup" id="signup-form" class="new-user-form" onsubmit="submitButton.disabled = true; return true;">
       <label>
         First Name:
-        <input type = "text" id="userFirstName" name="userFirstName" value="{{user.userFirstName}}" placeholder="Enter your first name"/>
+        <input type = "text" name="userFirstName" id="userFirstName"  value="{{user.userFirstName}}" placeholder="Enter your first name"/>
       </label>
       
       <br/>
@@ -14,7 +14,7 @@
       
       <label>
         Last Name:
-        <input type = "text" id="userLastName" name="userLastName" value="{{user.userLastName}}" placeholder="Enter your last name"/>
+        <input type = "text" name="userLastName" id="userLastName" value="{{user.userLastName}}" placeholder="Enter your last name"/>
       </label>
       
       <br/>
@@ -22,7 +22,7 @@
 
       <label>
         UserName:
-        <input type = "text" id="username" name="username" value="{{user.username}}" placeholder="Enter a Username"/>
+        <input type = "text" name="username" id="username" value="{{user.username}}" placeholder="Enter a Username"/>
       </label>
 
       <br/>
@@ -30,33 +30,25 @@
 
       <label>  
         Gender:
-        <input type="radio" name="user-gender" value="1" /> Male
-        <input type="radio" name="user-gender" value="2" /> Female
-        <input type="radio" name="user-gender" value="3" /> Other
-        <input type="radio" name="user-gender" value="4" /> Do not wish to answer
+        <input type="radio" id="user-gender" name="user-gender"value="1" /> Male
+        <input type="radio" id="user-gender" name="user-gender" value="2" /> Female
+        <input type="radio" id="user-gender" name="user-gender" value="3" /> Other
+        <input type="radio" id="user-gender" name="user-gender" value="4" /> Do not wish to answer
       </label>
-
-      <br/>
-      <br/>
-
-      <label>
-        Date of birth:
-        <input type = "date" id="dob" name="dob" value="{{user.dob}}" placeholder="Enter your date of birth"/>
-      </label>  
 
       <br/>
       <br/>
 
       <label>
         Age:
-        <input type = "text" id="age" name="age" value="{{user.age}}" placeholder="Enter your age"/>
+        <input type = "text" name="age" id="age" value="{{user.age}}" placeholder="Enter your age"/>
       </label>
       <br/>
       <br/>
       
       <label>
         Phone number:
-        <input type = "tel" id="tel" name="tel" value="{{user.tel}}" placeholder="Enter your phone number"/>
+        <input type = "tel" name="tel" id="tel" value="{{user.tel}}" placeholder="Enter your phone number"/>
       </label>    
 
       <br/>
@@ -64,7 +56,7 @@
       
       <label>
         Email Address:
-        <input type = "email" id="email" name="email" value="{{user.email}}" placeholder="Enter your Email address"/>
+        <input type = "email" name="email" id="email" value="{{user.email}}" placeholder="Enter your Email address"/>
       </label>
 
       <br/>
@@ -72,7 +64,7 @@
 
       <label>
         Create Password:
-        <input type="password" id="password" name="password"  value="{{user.password}}" class="full-width-input"/>
+        <input type="password" name="password" id="password"  value="{{user.password}}" class="full-width-input"/>
       </label>
 
       <br/>
@@ -80,7 +72,7 @@
 
       <label>
         Confirm Password:
-        <input type="password" id="password-confirm" name="password-confirm" class="full-width-input"/>
+        <input type="password" name="password_confirm" id="password_confirm" value="{{user.password_confirm}}" class="full-width-input"/>
       </label>
       
       <br/>
@@ -88,17 +80,19 @@
 
       <label>
         Preferred Contact:
-        <input type = "checkbox" name="contactType" value="Email">Email
-        <input type = "checkbox" name="paymentType" value="phone"/>Phone
+        <input type = "checkbox" id="contactType" name="contactType" value="Email">Email
+        <input type = "checkbox" id="paymentType" name="paymentType" value="phone"/>Phone
       </label>
 
       <br><br>
     Already have an account? <a href="login">Log in</a>
     <br><br>
-
-      <button type="submit">SIGN UP</button>
       {{#each errors}}
               <div class = "error">{{this}}</div>
       {{/each}}
+      <br>
+      <button type="submit" id="submitbutton">SIGN UP</button>
+
+      
     </form>
 </section>
