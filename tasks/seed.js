@@ -1,5 +1,5 @@
 const dbConnection = require('../config/mongoConnection');
-const data = require('../data');
+const data = require('../data/');
 const users = data.users;
 const properties = data.properties;
 const comments = data.comments;
@@ -8,8 +8,8 @@ async function main() {
   const db = await dbConnection();
   await db.dropDatabase();
 
-  const user1 = await users.CreateUser('John','Doe', "JOJO123", "sd5a1d5w8ad52c1456DXS4", "jdoe@gmail.com", "2015463981", 28);
-  const user2 = await users.CreateUser('Jane','Doe', "JaneDoe12", "sd5a1d5w8d541a4s58", "jane.doe@gmail.com", "2015467457", 33);
+  const user1 = await users.CreateUser('John','Doe', "JOJO123", "jdoe@gmail.com", "2015463981", 28, "sd5a1d5w8ad52c1456DXS4");
+  const user2 = await users.CreateUser('Jane','Doe', "JaneDoe12", "jane.doe@gmail.com", "2015467457", 33, "sd5a1d5w8d541a4s58");
   //const user3 = await users.CreateUser({ "userFirstName": 'Tim',  "userLastName": 'White'}, "T1mWHT", "twhite@yahoo.com", "2014862357", 22, "a6fas1as1a47E8R7Esf1");
   //const user4 = await users.CreateUser({ "userFirstName": 'Alice',  "userLastName": 'Brown'}, "Alice_Brown", "Ali.Brown@gmail.com", "2015456321", 25, "asd45f1f7ggh8jd7sx4");
   //const user5 = await users.CreateUser({ "userFirstName": 'Bob',  "userLastName": 'Green'}, "Bobby", "greenbobby@gmail.com", "2017969430", 30, "s8v1j4i2f1sz541s4x1c4");
@@ -23,7 +23,7 @@ async function main() {
   
   console.log('Done seeding database');
 
-  await db.serverConfig.close();
+  //await db.serverConfig.close();
 }
 
 main();

@@ -1,6 +1,6 @@
 const usersData = require('./users');
 const propertiesData = require('./properties');
-const commentsData = require('./comments')
+const commentsData = require('./comments');
 
 module.exports = {
   users: usersData,

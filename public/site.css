@@ -1,5 +1,6 @@
 *{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 23px;
 }
 
 body{
@@ -10,6 +11,7 @@ body{
 main{
     padding: 50px;
     background-color: #e0dcd8;
+    height: 750px;
     
 }
 
@@ -33,19 +35,11 @@ main{
     padding-left: 20px;
 }
 
-.nav-left{
-    float: left;
-}
-
-.nav-right{
-    float: right;
-}
-
 nav{
     display: flex;
     width: 100%;
     /* Height of the footer*/ 
-    height: 40px;
+    height: 50px;
     background: grey;
 }
 
@@ -55,4 +49,50 @@ nav{
 
 .error{
     color: red;
+    font-size: 14px;
+}
+
+.logout{
+    justify-content: center;
+    background-color: red;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.logout:hover{
+    zoom: 150%;
+}
+
+a{
+    color:black;
+}
+
+.container {
+    width:600px;
+    height:190px;
+    padding-top:20px;
+    padding-left:15px;
+    padding-right:15px;
+}
+#st-box {
+    float:left;
+    width:180px;
+    height:160px;
+    background-color:white;
+    border:solid black;
+}
+#nd-box {
+    float:left;
+    width:180px;
+    height:160px;
+    background-color:white; 
+    border:solid black;
+    margin-left:20px;
+}
+#rd-box {
+    float:right;
+    width:180px;
+    height:160px;
+    background-color:white;
+    border:solid black;
 }
