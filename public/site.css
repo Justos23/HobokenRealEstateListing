@@ -96,3 +96,14 @@ a{
     background-color:white;
     border:solid black;
 }
+
+#search{
+    float:right;
+    margin-left:1150px;
+    justify-content: center;
+}
+
+#profile{
+    float:right;
+    margin-left:30px;
+}
