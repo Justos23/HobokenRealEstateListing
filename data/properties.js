@@ -1,7 +1,9 @@
 const { ObjectId } = require('mongodb');
 const mongoCollections = require('../config/mongoCollections');
 const properties = mongoCollections.properties;
+const comments = mongoCollections.comments;
 const users = require('./users');
+const commentsData = require('./comments');
 
 const exportedMethods = {
   
@@ -37,6 +39,7 @@ const exportedMethods = {
             squareFeet: squareFeet,
             address: address,
             pictures: [],
+            comments: [],
           }
         
     
@@ -45,6 +48,20 @@ const exportedMethods = {
     
         return await this.ReadPropertyById(newId);
       },
+
+    async addComment(propertyId,id) {
+      let property = await this.ReadPropertyById(propertyId);
+      const propertyDb = await properties();
+      const commentDb = await comments();
+      const info = await propertyDb.updateOne(
+        {_id: propertyId},
+        {$addToSet: {comments: await commentsData.findOne({_id: id})}}
+      )
+      if (!info.matchedCount && !info.modifiedCount) {
+        throw 'Property comments update failed';
+      }
+      return await this.ReadPropertyById(propertyId);
+    }
 };
 
 

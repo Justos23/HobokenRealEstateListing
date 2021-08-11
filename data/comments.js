@@ -2,6 +2,7 @@ const { ObjectId } = require('mongodb');
 const mongoCollections = require('../config/mongoCollections');
 const comments = mongoCollections.comments;
 const users = require('./users');
+const properties = require('./properties');
 
 const exportedMethods = {
   
@@ -29,9 +30,11 @@ const exportedMethods = {
             comment: comment
         }
             
-        
         const newInsertInformation = await commentCollection.insertOne(newComment);
         const newId = newInsertInformation.insertedId;
+
+        const property = await properties.addComment(propertyID,newId);
+        const user = await users.addComment(userID,newId);
         
         return await this.ReadCommentById(newId);
     },

@@ -1,8 +1,10 @@
 const { ObjectId } = require('mongodb');
 const mongoCollections = require('../config/mongoCollections');
+const comments = mongoCollections.comments;
 const users = mongoCollections.users;
 const bcrypt = require('bcrypt');
 const saltRounds = 16;
+const commentsData = require('./comments');
 
 const exportedMethods = {
     async ReadUserById(id) {
@@ -63,6 +65,20 @@ const exportedMethods = {
     
         return await this.ReadUserById(newId);
       },
+
+      async addComment(userId,id) {
+        let user = await this.ReadUserById(userId);
+        const userDb = await users();
+        const commentDb = await comments();
+        const info = await userDb.updateOne(
+          {_id: userId},
+          {$addToSet: {comments: await commentsData.findOne({_id: id})}}
+        )
+        if (!info.matchedCount && !info.modifiedCount) {
+          throw 'User comments update failed';
+        }
+        return await this.ReadUserById(userId);
+      }
 };
 
 module.exports = exportedMethods;
