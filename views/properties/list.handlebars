@@ -1,3 +1,11 @@
 <section>
     This is a list of properties.
+
+  <h1>Properties</h1>
+  {{#each properties}}  
+    <article class="properties">
+      <h2><a href="/properties/{{_id}}">{{properties}}</a></h2>
+      <p>{{body}}</p>
+    </article>
+  {{/each}}
 </section>
