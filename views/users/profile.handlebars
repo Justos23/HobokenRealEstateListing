@@ -1,6 +1,6 @@
 <nav>
-    <button class=".nav-left" type="button">Sell a property</button>
-    <button class=".nav-left" type="button">Buy a property</button>
+    <button onclick="location.href='/private/addProperty'" class=".nav-left" type="button">Sell a property</button>
+    <button onclick="location.href='/properties/filters'" class=".nav-left" type="button">Buy a property</button>
     </nav>
 <div> 
   <br>
@@ -9,20 +9,28 @@
   <h1>{{title}}</h1>
   <p>Username: {{user.username}}</p> 
   <p>First Name: {{user.userFirstName}}</p> 
-  <p>Last Name:{{user.userLastName}}</p> 
+  <p>Last Name: {{user.userLastName}}</p> 
   <p>Email: {{user.email}}</p> 
   <p>Phone number: {{user.phoneNumber}}</p> 
   <p>Age: {{user.age}}</p> 
   <dl>
     <dt>Properties</dt> 
-      <dd> 
-        <ul>
-          {{#each user.properties}} 
-          <li>{{this}}</li>
+      <dd>
+        <ol>
+          {{#each user.Properties}} 
+          <li>
+            <div class="property-list">
+              <a href="properties/single/:{{Properties._id}}">
+                <img src="/public/Sample_house4.png" style="width:200px; height:180px;">
+                <p class="property-list-info">{{homeType}} - ${{price}} ({{sellType}}): {{numofBedrooms}} beds {{numofBathrooms}} baths</p>
+              </a>
+            </div>
+          </li>
           {{else}}
-          <p class="empty">You do not have any property to sell yet</p>
+          <p class="empty">You do not have any properties to sell/rent yet</p>
           {{/each}}
-        </ul> 
+        </ol>
+          
       </dd> 
     <dt>Favorites</dt> 
       <dd> 
@@ -36,7 +44,7 @@
       </dd>
 <br>
 <center>
-  <a href="/users/logout" class="logout-btn"  type="button">Log Out</a>
+  <a href="/users/logout/" class="logout-btn"  type="button">Log Out</a>
 </center>
 
 </div>

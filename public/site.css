@@ -11,13 +11,13 @@ body{
 main{
     padding: 50px;
     background-color: #e0dcd8;
-    height: 770px;
+    min-height: 770px;
     
 }
 
 
 #footer {
-    position: absolute;
+    position: relative;
     left:0;
     bottom: 0;
     width: 100%;
@@ -96,6 +96,10 @@ a{
     background-color:white;
     border:solid black;
     margin-left:70px;
+}
+
+.property-list-info{
+    font-size: 14px;
 }
 
 #search{
