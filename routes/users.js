@@ -29,7 +29,7 @@ router.post('/login', async (req, res) =>{
 
     const users = await userData.getAllUsers();
     for (let i = 0; i < users.length; i++){
-        if (users[i].username == username_lowerCase){
+        if (users[i].username.toLowerCase() == username_lowerCase){
             CurrentUser = users[i];
         }
     }
@@ -73,7 +73,7 @@ router.post('/signup', async (req, res) => {
     let userInfo = req.body;
     const userFirstName = (userInfo.userFirstName);
     const userLastName = (userInfo.userLastName);
-    const username = (userInfo.username).toLowerCase();
+    const username = (userInfo.username);
     const password = (userInfo.password);
     const password_confirm = (userInfo.password_confirm);
     const email = (userInfo.email);
