@@ -4,6 +4,9 @@ const properties = mongoCollections.properties;
 const comments = mongoCollections.comments;
 const users = require('./users');
 const commentsData = require('./comments');
+=======
+const users = mongoCollections.users;
+//const users = require('./users');
 
 const exportedMethods = {
   
@@ -16,21 +19,19 @@ const exportedMethods = {
         return property;
       },
 
-    async CreateProperty(userID, sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, address) {
+    async CreateProperty(userID, sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, streetname) {
 
-        if (typeof userID !== 'string') throw 'You need to provide a valid userID';
-        if (typeof sellType !== 'string') throw 'You need to state if the property is going to be either to sell or rent';
-        if (typeof homeType !== 'string') throw 'You need to provide a valid home type';
-        if (typeof price !== 'string') throw 'You need to provide a valid price';
-        if (typeof numofBedrooms !== 'number') throw 'You need to provide a valid number of bedrooms';
-        if (typeof numofBathrooms !== 'number') throw 'You need to provide a valid number of bathrooms';
-        if (typeof squareFeet !== 'number') throw 'You need to provide a valid square feet';
-        if (typeof address !== 'string') throw 'You need to provide a valid location';
+      if (!sellType) throw 'You need to state if the property is going to be either to sell or rent';
+      if (!homeType) throw 'You need to provide a valid home type';
+      if (!price) throw 'You need to provide a valid price';
+      if (!numofBedrooms) throw 'You need to provide a valid number of bedrooms';
+      if (!numofBathrooms) throw 'You need to provide a valid number of bathrooms';
+      if (!squareFeet) throw 'You need to provide a valid square feet';
+      if (!streetname || typeof streetname !== 'string' || !streetname.trim() ) throw 'You need to provide a valid location';
 
         const propertyCollection = await properties();
     
         const newProperty = {
-            userID: userID,
             sellType:sellType,
             homeType: homeType,
             price: price,
@@ -40,13 +41,22 @@ const exportedMethods = {
             address: address,
             pictures: [],
             comments: [],
+            streetname: streetname,
+            Seller: userID,
           }
         
     
         const newInsertInformation = await propertyCollection.insertOne(newProperty);
         const newId = newInsertInformation.insertedId;
     
-        return await this.ReadPropertyById(newId);
+        const userCollection = await users();
+        const updateInfo = await userCollection.updateOne({ username: userID},{$push: { 'Properties': newProperty }});
+          if (updateInfo.modifiedCount === 0) {
+              throw `Could not add property successfully`;
+          }
+        CurrentUser = await userCollection.findOne({ username: userID});
+        return CurrentUser;
+        //return await this.ReadPropertyById(newId);
       },
 
     async addComment(propertyId,id) {

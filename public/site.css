@@ -11,13 +11,13 @@ body{
 main{
     padding: 50px;
     background-color: #e0dcd8;
-    height: 750px;
+    min-height: 770px;
     
 }
 
 
 #footer {
-    position: absolute;
+    position: relative;
     left:0;
     bottom: 0;
     width: 100%;
@@ -52,49 +52,43 @@ nav{
     font-size: 14px;
 }
 
-.logout{
-    justify-content: center;
-    background-color: red;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-.logout:hover{
-    zoom: 150%;
-}
-
 a{
     color:black;
 }
 
 .container {
-    width:600px;
-    height:190px;
+    width:850px;
+    height:210px;
     padding-top:20px;
     padding-left:15px;
     padding-right:15px;
 }
 #st-box {
     float:left;
-    width:180px;
-    height:160px;
+    width:200px;
+    height:180px;
     background-color:white;
     border:solid black;
 }
 #nd-box {
     float:left;
-    width:180px;
-    height:160px;
+    width:200px;
+    height:180px;
     background-color:white; 
     border:solid black;
-    margin-left:20px;
+    margin-left:120px;
 }
 #rd-box {
     float:right;
-    width:180px;
-    height:160px;
+    width:200px;
+    height:180px;
     background-color:white;
     border:solid black;
+    margin-left:70px;
+}
+
+.property-list-info{
+    font-size: 14px;
 }
 
 #search{
@@ -106,4 +100,30 @@ a{
 #profile{
     float:right;
     margin-left:30px;
+}
+
+.logout-btn{
+    text-decoration: solid;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: red;
+    cursor: pointer;
+}
+
+.logout-btn:hover{
+    background-color: red;
+    transform: scale(1.3);
+}
+
+.submitbutton-form{
+    text-decoration: solid;
+    border: solid 3px;
+    border-radius: 20px;
+    border-color: green;
+    cursor: pointer;
+}
+
+.submitbutton-form:hover{
+    background-color: green;
+    transform: scale(1.3);
 }

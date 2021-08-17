@@ -1,8 +1,10 @@
 <section>
-  <a href="/">Home</a>
+  <a href="/">&#8592; Home</a>
 <br/>
+<br>
     <h1>Property Search</h1>
-
+<br/>
+<br/>
 <form method = "POST" id = "fitlers" class="property-filters"></form>
 
 <div>
@@ -13,23 +15,24 @@
           <option value="Rent">Rent</option>
         </select>
 </div>
-
+<br>
 <div>
 <label>Home</label>
 <select value="{{homeType}}" id="homeType" name="homeType">
           <option value="" disabled selected>Select</option>
           <option value="apartment">Apartment</option>
           <option value="house">House</option>
+          <option value="both">Both</option>
         </select>
 </div>
-
+<br>
 <div>
 <label>
         Price:
         <input type = "text" id="price" name="price" value="{{price}}" placeholder="Enter a value"/>
 </label>
 </div>
-
+<br>
 <div>
 <label>Number of Bedrooms</label>
 <select value="{{numofBedrooms}}" id="numofBedrooms" name="numofBedrooms" placeholder="Select">
@@ -42,7 +45,7 @@
           <option value="six">6+</option>
         </select>
 </div>
-
+<br>
 <div>
 <label>Number of Bathrooms</label>
 <select value="{{numofBathrooms}}" id="numofBathrooms" name="numofBathrooms" placeholder="Select">
@@ -55,20 +58,23 @@
           <option value="six6">6+</option>
         </select>
 </div>
-
+<br>
 <div>
 <label>
         Square Feet:
         <input type = "text" id="squareFeet" name="squareFeet" value="{{squareFeet}}" placeholder="Enter a value"/>
 </label>
 </div>
-
+<br>
 <div>
 <label>
         Location:
         <input type = "text" id="location" name="location" value="{{location}}" placeholder="Enter a Street"/>
 </label>
 </div>
+<br>
+<center>
+    <button type="submit" class="submitbutton-form">Search</button>    
+</center>
 
-<button type="submit">Search</button>
 

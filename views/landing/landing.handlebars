@@ -1,11 +1,11 @@
 <nav>
-    <button onclick="location.href='/users/login'" class=".nav-left" type="button">Sell a property</button>
+    <button onclick="location.href='/private/addProperty'" class=".nav-left" type="button">Sell a property</button>
     <button onclick="location.href='/properties/filters'" class=".nav-left" type="button">Buy a property</button>
     <form method= "POST" action="/search" id="search">
         <input class="nav-right" type="text" id="searchbar" placeholder="Search"/>
         <input class="nav-right" type="submit" id="searchsubmit" value="Submit">       
     </form>
-    <a href="/private/profile" class="nav-right" id="profile"><i class="fas fa-user fa-2x"></i></a>
+    <a href="/users/login" class="nav-right" id="profile"><i class="fas fa-user fa-2x"></i></a>
 </nav>
 <div>
     <p>Welcome to the Hoboken Real Estate Listing website. We will help you find the property of your dreams in the city with one of the most beautiful landscape in the world.</p>
@@ -17,17 +17,24 @@
 <center>
    <div class="container">
     <div id="st-box">
-        <p>First property</p>
+        <a href="properties/single/">
+            <img src="/public/Sample_house1.png" style="width:200px; height:180px;">
+            <p class="property-list-info">House - $500,000 (sell): 4 beds 4 baths</p>
+        </a>
     </div>
               
     <div id="nd-box">
-        <p>
-            Second property
-        </p>
+        <a href="properties/single/">
+            <img src="/public/Sample_house2.png" style="width:200px; height:180px;">
+            <p class="property-list-info">Apartment - $95,000 (sell): 2 beds 1 bath</p>
+        </a>
     </div>
               
     <div id="rd-box">
-       <p>Third property</p>
+       <a href="properties/single/">
+            <img src="/public/Sample_house3.png" style="width:200px; height:180px;">
+            <p class="property-list-info">Apartment - $1,600/month (rent): 2 beds 2 baths</p>
+        </a>
    </div>
 </div> 
 </center>

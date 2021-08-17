@@ -1,0 +1,103 @@
+<section>
+  <a href="/">&#8592; Home</a>
+
+    <h1>Add your Property</h1>
+
+    <form  method="POST" action="/private/addProperty" id="addproperty-form" class="new-property-form" onsubmit="submitButton.disabled = true; return true;">
+
+      <div>
+        <label for="image">Upload Image</label>
+        <input type="file" id="image" name="image" value="{{property.image}}" class="form-control-file" Content-Type: "multipart/form-data">
+      </div>
+      <br/>
+      <br/>
+      <label>
+        Sell Type:
+        <select value="{{property.sellType}}" id="sellType" name="sellType" placeholder="Select">
+          <option value="" disabled selected>Select</option>
+          <option value="Sale">Sale</option>
+          <option value="Rent">Rent</option>
+        </select>
+      </label>
+      
+      <br/>
+      <br/>
+      
+      <label>
+        Home type:
+        <select value="{{property.homeType}}" id="homeType" name="homeType">
+          <option value="" disabled selected>Select</option>
+          <option value="Apartment">Apartment</option>
+          <option value="House">House</option>
+        </select>
+      </label>
+      
+      <br/>
+      <br/>
+
+      <label>
+        Price:
+        <input type = "number" name="price" id="price" value="{{property.price}}" placeholder="Enter a Price"/>
+      </label>
+
+      <br/>
+      <br/>
+
+      <label>  
+        Number of bedrooms:
+        <select value="{{property.numofBedrooms}}" id="numofBedrooms" name="numofBedrooms" placeholder="Select">
+          <option value="" disabled selected>Select</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6+</option>
+        </select>
+      </label>
+
+      <br/>
+      <br/>
+
+      <label>
+        Number of bathrooms:
+        <select value="{{peroperty.numofBathrooms}}" id="numofBathrooms" name="numofBathrooms" placeholder="Select">
+          <option value="" disabled selected>Select</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6+</option>
+        </select>
+      </label>
+      <br/>
+      <br/>
+      
+      <label>
+        Size (sqft):
+        <input type = "number" name="squareFeet" id="squareFeet" value="{{property.squareFeet}}" placeholder="Enter a size in sqft"/>
+      </label>   
+
+      <br/>
+      <br/>
+      
+      <label>
+        Street name:
+        <input type = "text" name="streetname" id="streetname" value="{{property.streetname}}" placeholder="Enter the street name"/>
+      </label>
+
+      <br/>
+      <br/>
+
+      {{#each errors}}
+              <div class = "error">{{this}}</div>
+      {{/each}}
+      <br>
+      <center>
+        <button type="submit" class="submitbutton-form">Add your property</button>
+      </center>
+      
+      
+    </form>
+</section>

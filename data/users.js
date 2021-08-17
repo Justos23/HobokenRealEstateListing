@@ -50,14 +50,11 @@ const exportedMethods = {
         const newUser = {
           userFirstName:userFirstName, 
           userLastName: userLastName,
-          username: username_lowerCase,
+          username: username,
           hashedPassword: hashedPassword,
           email: email,
           phoneNumber: tel,
           age: age,
-          properties: [],
-          favorites: [],
-          comments: [],
         };
     
         const newInsertInformation = await userCollection.insertOne(newUser);

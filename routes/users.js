@@ -10,7 +10,7 @@ const userData = data.users;
 
 router.get('/login', async (req, res) =>{
     if (req.session.user){
-        res.redirect('/private/profile');
+        res.redirect('/private/profile')
     }else{
         res.render('users/login', {
             title: "Login Page",
@@ -29,7 +29,7 @@ router.post('/login', async (req, res) =>{
 
     const users = await userData.getAllUsers();
     for (let i = 0; i < users.length; i++){
-        if (users[i].username == username_lowerCase){
+        if (users[i].username.toLowerCase() == username_lowerCase){
             CurrentUser = users[i];
         }
     }
@@ -52,12 +52,11 @@ router.post('/login', async (req, res) =>{
             req.session.previousRoute = '';
             return res.redirect(temp);
         } 
-        res.redirect("/");
+        res.redirect('/');
     } else {
         errors.push("Username or password does not match");
         return res.status(401).render('users/login', {   
-            title: "Errors",
-            partial: "login-script",
+            title: "Log In",
             errors: errors
         });
     }
@@ -73,7 +72,7 @@ router.post('/signup', async (req, res) => {
     let userInfo = req.body;
     const userFirstName = (userInfo.userFirstName);
     const userLastName = (userInfo.userLastName);
-    const username = (userInfo.username).toLowerCase();
+    const username = (userInfo.username);
     const password = (userInfo.password);
     const password_confirm = (userInfo.password_confirm);
     const email = (userInfo.email);
