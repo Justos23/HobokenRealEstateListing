@@ -10,7 +10,7 @@ const userData = data.users;
 
 router.get('/login', async (req, res) =>{
     if (req.session.user){
-        res.redirect('/private/profile');
+        res.redirect('/private/profile')
     }else{
         res.render('users/login', {
             title: "Login Page",
@@ -52,12 +52,11 @@ router.post('/login', async (req, res) =>{
             req.session.previousRoute = '';
             return res.redirect(temp);
         } 
-        res.redirect("/");
+        res.redirect('/');
     } else {
         errors.push("Username or password does not match");
         return res.status(401).render('users/login', {   
-            title: "Errors",
-            partial: "login-script",
+            title: "Log In",
             errors: errors
         });
     }

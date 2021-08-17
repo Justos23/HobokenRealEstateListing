@@ -3,25 +3,6 @@ const router = express.Router();
 const data = require('../data');
 const UserData = data.users;
 const PropertyData= data.properties;
-const multer = require('multer');
-const { request } = require('express');
-
-const storage = multer.diskStorage({
-  destination: function(request, file, callback){
-    callback(null, './public/Properties');
-  },
-
-  filename:function(request, file, callback){
-    callback(null, Date.now() + file.originalname);
-  },
-});
-
-const upload = multer({
-  storage:storage,
-  limits:{
-    fieldsize:1024*1024*3
-  },
-});
 
 router.get('/addProperty',  async (req, res) =>{
     const userData = req.session.user;
@@ -64,6 +45,7 @@ router.post('/addProperty', async (req, res) =>{
     try {
         const property = await PropertyData.CreateProperty(userData.username, sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, streetname);
         console.log("Property successfully added");
+        req.session.user= CurrentUser;
         res.redirect("/");
     } catch(e) {
         errors.push(e);
