@@ -48,7 +48,9 @@ const exportedMethods = {
           if (updateInfo.modifiedCount === 0) {
               throw `Could not add property successfully`;
           }
-        return await this.ReadPropertyById(newId);
+        CurrentUser = await userCollection.findOne({ username: userID});
+        return CurrentUser;
+        //return await this.ReadPropertyById(newId);
       },
 };
 
