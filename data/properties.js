@@ -2,9 +2,7 @@ const { ObjectId } = require('mongodb');
 const mongoCollections = require('../config/mongoCollections');
 const properties = mongoCollections.properties;
 const comments = mongoCollections.comments;
-const users = require('./users');
 const commentsData = require('./comments');
-=======
 const users = mongoCollections.users;
 //const users = require('./users');
 
@@ -38,9 +36,9 @@ const exportedMethods = {
             numofBedrooms: numofBedrooms,
             numofBathrooms: numofBathrooms,
             squareFeet: squareFeet,
-            address: address,
-            pictures: [],
-            comments: [],
+            //address: address,
+            //pictures: [],
+            //comments: [],
             streetname: streetname,
             Seller: userID,
           }

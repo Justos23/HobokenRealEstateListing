@@ -20,11 +20,13 @@
   "homepage": "https://github.com/Justos23/HobokenRealEstateListing#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "bson": "^4.4.1",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.2",
     "express-session": "^1.17.2",
     "handlebars": "^4.7.7",
-    "mongodb": "^4.0.0",
+    "mongodb": "^4.1.0",
+    "mongoose": "^5.13.7",
     "multer": "^1.4.3",
     "uuid": "^8.3.2",
     "xss": "^1.0.9"
