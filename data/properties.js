@@ -1,12 +1,9 @@
 const { ObjectId } = require('mongodb');
 const mongoCollections = require('../config/mongoCollections');
 const properties = mongoCollections.properties;
-const comments = mongoCollections.comments;
-const users = require('./users');
-const commentsData = require('./comments');
-=======
 const users = mongoCollections.users;
 //const users = require('./users');
+
 
 const exportedMethods = {
   
@@ -19,7 +16,7 @@ const exportedMethods = {
         return property;
       },
 
-    async CreateProperty(userID, sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, streetname) {
+  async CreateProperty(userID, sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, streetname) {
 
       if (!sellType) throw 'You need to state if the property is going to be either to sell or rent';
       if (!homeType) throw 'You need to provide a valid home type';
@@ -38,9 +35,6 @@ const exportedMethods = {
             numofBedrooms: numofBedrooms,
             numofBathrooms: numofBathrooms,
             squareFeet: squareFeet,
-            address: address,
-            pictures: [],
-            comments: [],
             streetname: streetname,
             Seller: userID,
           }
@@ -59,19 +53,19 @@ const exportedMethods = {
         //return await this.ReadPropertyById(newId);
       },
 
-    async addComment(propertyId,id) {
-      let property = await this.ReadPropertyById(propertyId);
-      const propertyDb = await properties();
-      const commentDb = await comments();
-      const info = await propertyDb.updateOne(
-        {_id: propertyId},
-        {$addToSet: {comments: await commentsData.findOne({_id: id})}}
-      )
-      if (!info.matchedCount && !info.modifiedCount) {
-        throw 'Property comments update failed';
-      }
-      return await this.ReadPropertyById(propertyId);
-    }
+      async getAllProperties(){
+        const {arrayofProperties} = properties;
+        return arrayofProperties;
+
+      },
+
+      async getSingleProperty(_id) {
+
+        const singleProperty = properties._id;
+        return await singleProperty;
+        },
+      
+ 
 };
 
 
