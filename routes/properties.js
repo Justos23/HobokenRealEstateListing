@@ -15,29 +15,30 @@ router.get('/filters', async (req, res) =>{
 router.post('/list',async (req, res) => {
     const {sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, location} = req.body;
     const propertyDb = await properties();
-    let filtered = propertyDb.find();
+    let filtered = await propertyDb.find({}).toArray();;
     if (sellType) {
-        filtered = filtered.find({ $elemMatch : { sellType : sellType} })
+        filtered = filtered.filter(x => x.sellType == sellType);
     }
     if (homeType) {
-        filtered = filtered.find({ $elemMatch : { homeType : homeType} })
+        filtered = filtered.filter(x => x.homeType == homeType);
     }
     if (price) {
-        filtered = filtered.find({ $elemMatch : { price : price} })
+        filtered = filtered.filter(x => x.price < price);
     }
     if (numofBedrooms) {
-        filtered = filtered.find({ $elemMatch : { numofBedrooms : numofBedrooms} })
+        filtered = filtered.filter(x => x.numofBedrooms > numofBedrooms);
     }
     if (numofBathrooms) {
-        filtered = filtered.find({ $elemMatch : { numofBathrooms : numofBathrooms} })
+        filtered = filtered.filter(x => x.numofBathrooms > numofBathrooms);
     }
     if (squareFeet) {
-        filtered = filtered.find({ $elemMatch : { squareFeet : squareFeet} })
+        filtered = filtered.filter(x => x.squareFeet > squareFeet);
     }
     if (location) {
-        filtered = filtered.find({ $elemMatch : { location : location} })
+        filtered = filtered.filter(x => x.streetname == location);
     }
-    res.render('/properties/list',{properties: filtered});
+    console.log(filtered);
+    return res.render('properties/list',{properties: filtered});
 })
 
 module.exports = router; 

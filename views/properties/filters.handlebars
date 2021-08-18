@@ -5,7 +5,7 @@
     <h1>Property Search</h1>
 <br/>
 <br/>
-<form action='/properties/list' method = "POST" id = "filters" class="property-filters"></form>
+<form action='/properties/list' method = "POST" id = "filters" class="property-filters">
 
 <div>
 <label>For:</label>
@@ -29,7 +29,7 @@
 <div>
 <label>
         Price:
-        <input type = "text" id="price" name="price" value="{{price}}" placeholder="Enter a value"/>
+        <input type = "number" id="price" name="price" value="{{price}}" placeholder="Enter a value"/>
 </label>
 </div>
 <br>
@@ -62,7 +62,7 @@
 <div>
 <label>
         Square Feet:
-        <input type = "text" id="squareFeet" name="squareFeet" value="{{squareFeet}}" placeholder="Enter a value"/>
+        <input type = "number" id="squareFeet" name="squareFeet" value="{{squareFeet}}" placeholder="Enter a value"/>
 </label>
 </div>
 <br>
