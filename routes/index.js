@@ -2,24 +2,6 @@ const userRoutes = require('./users');
 const propertiesRoutes = require('./properties');
 const landingRoutes = require('./landing');
 const privateRoutes = require('./private');
-const multer = require('multer')
-
-const storage = multer.diskStorage({
-  destination: function(request, file, callback){
-    callback(null, './public/Properties');
-  },
-
-  filename:function(request, file, callback){
-    callback(null, Date.now() + file.originalname);
-  },
-});
-
-const upload = multer({
-  storage:storage,
-  limits:{
-    fieldsize:1024*1024*3
-  },
-});
 
 const constructorMethod = (app) => {
 
