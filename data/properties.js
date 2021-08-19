@@ -17,8 +17,9 @@ const exportedMethods = {
         return property;
       },
 
-    async CreateProperty(userID, sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, streetname) {
+    async CreateProperty(userID, title, sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, streetname, bio) {
 
+      if (!title) errors.push('You need to provide a title for your property');
       if (!sellType) throw 'You need to state if the property is going to be either to sell or rent';
       if (!homeType) throw 'You need to provide a valid home type';
       if (!price) throw 'You need to provide a valid price';
@@ -26,10 +27,12 @@ const exportedMethods = {
       if (!numofBathrooms) throw 'You need to provide a valid number of bathrooms';
       if (!squareFeet) throw 'You need to provide a valid square feet';
       if (!streetname || typeof streetname !== 'string' || !streetname.trim() ) throw 'You need to provide a valid location';
+      if (!bio) errors.push('You need to provide a bio for your property');
 
         const propertyCollection = await properties();
     
         const newProperty = {
+            title:title,
             sellType:sellType,
             homeType: homeType,
             price: price,
@@ -40,6 +43,7 @@ const exportedMethods = {
             //pictures: [],
             //comments: [],
             streetname: streetname,
+            bio:bio,
             Seller: userID,
           }
         

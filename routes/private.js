@@ -16,6 +16,7 @@ router.get('/addProperty',  async (req, res) =>{
 router.post('/addProperty', async (req, res) =>{
     const userData = req.session.user;
     let propertyInfo = req.body;
+    const title = (propertyInfo.title);
     const sellType = (propertyInfo.sellType);
     const homeType = (propertyInfo.homeType);
     const price = (propertyInfo.price);
@@ -23,9 +24,11 @@ router.post('/addProperty', async (req, res) =>{
     const numofBathrooms = (propertyInfo.numofBathrooms);
     const squareFeet = (propertyInfo.squareFeet);
     const streetname = (propertyInfo.streetname);
+    const bio = (propertyInfo.bio);
 
     errors = [];
 
+    if (!title) errors.push('You need to provide a title for your property');
     if (!sellType) errors.push('You need to state if the property is going to be either to sell or rent');
     if (!homeType) errors.push('You need to provide a valid home type');
     if (!price) errors.push('You need to provide a valid price');
@@ -33,6 +36,7 @@ router.post('/addProperty', async (req, res) =>{
     if (!numofBathrooms) errors.push('You need to provide the number of bathrooms');
     if (!squareFeet) errors.push('You need to provide a valid square feet');
     if (!streetname || typeof streetname !== 'string' || !streetname.trim() ) errors.push('You need to provide a valid street name');
+    if (!bio) errors.push('You need to provide a bio for your property');
 
     if (errors.length > 0) {
         return res.status(401).render('properties/new',{
@@ -43,7 +47,7 @@ router.post('/addProperty', async (req, res) =>{
     }
 
     try {
-        const property = await PropertyData.CreateProperty(userData.username, sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, streetname);
+        const property = await PropertyData.CreateProperty(userData.username, title, sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, streetname, bio);
         console.log("Property successfully added");
         req.session.user= CurrentUser;
         res.redirect("/");

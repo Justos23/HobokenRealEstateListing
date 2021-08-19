@@ -26,6 +26,11 @@ app.use(
   })
 );
 
+app.use(async (req, res, next) => {
+  console.log(new Date().toUTCString() + ': ' + req.method + " " + req.originalUrl);
+  next();
+});
+
 app.use('/private', async(req, res, next) =>{
   if (!req.session.user) {
     return res.redirect('/users/login');

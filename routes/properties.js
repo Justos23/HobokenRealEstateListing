@@ -1,6 +1,9 @@
 const express = require('express');
+const { ObjectId } = require('mongodb');
 const router = express.Router();
 const data = require('../data');
+const mongoCollections = require('../config/mongoCollections');
+const properties = mongoCollections.properties;
 const propertiesData = data.properties; 
 
 router.get('/filters', async (req, res) =>{
@@ -9,6 +12,33 @@ router.get('/filters', async (req, res) =>{
     })
 })
 
-
+router.post('/list',async (req, res) => {
+    const {sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, location} = req.body;
+    const propertyDb = await properties();
+    let filtered = await propertyDb.find({}).toArray();;
+    if (sellType) {
+        filtered = filtered.filter(x => x.sellType == sellType);
+    }
+    if (homeType) {
+        filtered = filtered.filter(x => x.homeType == homeType);
+    }
+    if (price) {
+        filtered = filtered.filter(x => x.price < price);
+    }
+    if (numofBedrooms) {
+        filtered = filtered.filter(x => x.numofBedrooms > numofBedrooms);
+    }
+    if (numofBathrooms) {
+        filtered = filtered.filter(x => x.numofBathrooms > numofBathrooms);
+    }
+    if (squareFeet) {
+        filtered = filtered.filter(x => x.squareFeet > squareFeet);
+    }
+    if (location) {
+        filtered = filtered.filter(x => x.streetname == location);
+    }
+    console.log(filtered);
+    return res.render('properties/list',{properties: filtered});
+})
 
 module.exports = router; 

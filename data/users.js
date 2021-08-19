@@ -31,17 +31,17 @@ const exportedMethods = {
         if (typeof tel !== 'string') throw 'You need to provide a valid phone number';
         if (typeof age !== 'number') throw 'You need to provide a valid age';
         if (typeof password !== 'string') throw 'Invalid password';
-        
+
         const allUsers = await this.getAllUsers();
         let email_lowerCase = email.toLowerCase();
         let username_lowerCase = username.toLowerCase();
         EMAILS=[];
         allUsers.forEach(user => EMAILS.push(user.email));
         USERNAME=[];
-        allUsers.forEach(user => USERNAME.push(user.username));
+        allUsers.forEach(user => USERNAME.push((user.username).toLowerCase()));
         if(EMAILS.includes(email_lowerCase)) throw `This email already exists`;
 
-        if(USERNAME.includes(username_lowerCase)) throw `This email already exists`;
+        if(USERNAME.includes(username_lowerCase)) throw `This username already exists`;
 
         const hashedPassword = await bcrypt.hash(password, saltRounds);
     

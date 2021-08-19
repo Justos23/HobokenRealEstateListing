@@ -1,6 +1,6 @@
 <nav>
-    <button onclick="location.href='/private/addProperty'" class=".nav-left" type="button">Sell a property</button>
-    <button onclick="location.href='/properties/filters'" class=".nav-left" type="button">Buy a property</button>
+    <button onclick="location.href='/private/addProperty'" class=".nav-left" type="button">List a property</button>
+    <button onclick="location.href='/properties/filters'" class=".nav-left" type="button">Search a property</button>
     </nav>
 <div> 
   <br>
@@ -21,6 +21,7 @@
           <li>
             <div class="property-list">
               <a href="properties/single/:{{Properties._id}}">
+                <p>{{title}}</p>
                 <img src="/public/Sample_house4.png" style="width:200px; height:180px;">
                 <p class="property-list-info">{{homeType}} - ${{price}} ({{sellType}}): {{numofBedrooms}} beds {{numofBathrooms}} baths</p>
               </a>

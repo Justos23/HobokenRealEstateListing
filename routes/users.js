@@ -4,7 +4,7 @@ const data = require('../data');
 const bcrypt = require('bcrypt');
 const saltRounds = 16;
 //const verifier = require('../data/verify');
-//const xss = require('xss')
+const xss = require('xss');
 const userData = data.users;
 
 
@@ -20,8 +20,8 @@ router.get('/login', async (req, res) =>{
 
 router.post('/login', async (req, res) =>{
     let userInfo = req.body;
-    const username_lowerCase = (userInfo.username.trim()).toLowerCase();
-    const password = (userInfo.password.trim());
+    const username_lowerCase = userInfo.username.trim().toLowerCase();
+    const password = userInfo.password.trim();
 
     let CurrentUser;
 
@@ -69,15 +69,16 @@ router.get('/signup', async (req, res) => {
 });
 
 router.post('/signup', async (req, res) => {
+
     let userInfo = req.body;
-    const userFirstName = (userInfo.userFirstName);
-    const userLastName = (userInfo.userLastName);
-    const username = (userInfo.username);
-    const password = (userInfo.password);
-    const password_confirm = (userInfo.password_confirm);
-    const email = (userInfo.email);
-    const tel = (userInfo.tel);
-    let age = parseInt((userInfo.age));
+    const userFirstName = xss(userInfo.userFirstName);
+    const userLastName = xss(userInfo.userLastName);
+    const username = xss(userInfo.username);
+    const password = xss(userInfo.password);
+    const password_confirm = xss(userInfo.password_confirm);
+    const email = xss(userInfo.email);
+    const tel = xss(userInfo.tel);
+    let age = xss(parseInt((userInfo.age)));
 
     errors = [];
 
