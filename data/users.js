@@ -3,6 +3,7 @@ const mongoCollections = require('../config/mongoCollections');
 const comments = mongoCollections.comments;
 const users = mongoCollections.users;
 const bcrypt = require('bcrypt');
+//const bcrypt = require('bcryptjs');
 const saltRounds = 16;
 const commentsData = require('./comments');
 

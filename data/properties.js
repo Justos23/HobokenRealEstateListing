@@ -69,7 +69,8 @@ const exportedMethods = {
         throw 'Property comments update failed';
       }
       return await this.ReadPropertyById(propertyId);
-    }
+    },
+    
 };
 
 
