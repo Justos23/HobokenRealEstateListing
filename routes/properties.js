@@ -41,4 +41,12 @@ router.post('/list',async (req, res) => {
     return res.render('properties/list',{properties: filtered});
 })
 
+router.get('/:_id', async (req, res) => {
+    {
+      const property = await propertiesData.ReadPropertyById(req.params._id);
+      console.log(property);
+      res.render('properties/single', {property: property, title: property.streetname}) 
+  };
+})
+
 module.exports = router; 
