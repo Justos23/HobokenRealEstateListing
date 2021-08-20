@@ -7,6 +7,7 @@ const { comments } = require('../config/mongoCollections');
 const properties = mongoCollections.properties;
 const propertiesData = data.properties;
 const commentsData = data.comments;
+const usersData = data.users;
 
 router.get('/filters', async (req, res) =>{
     res.render('properties/filters', {
@@ -52,7 +53,10 @@ router.get('/:_id', async (req, res) => {
 router.post('/:_id', async (req, res) => {
     if (req.session.user) {
         const {comment} = req.body;
-        const commentInfo = await commentsData.CreateComment(req.session.user._id,req.params._id,comment);
+        userId = req.session.user._id;
+        user = await usersData.ReadUserById(req.session.user._id)
+        username = user.username;
+        const commentInfo = await commentsData.CreateComment(userId,req.params._id,comment, username);
         return res.redirect(`/properties/${req.params._id}`)
     } else {
         return res.status(401).redirect('../users/signup');

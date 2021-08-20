@@ -15,7 +15,7 @@ const exportedMethods = {
         return comment;
   },
     
-   async CreateComment(userID, propertyID, comment) {
+   async CreateComment(userID, propertyID, comment, username) {
 
         if (typeof userID !== 'string') throw 'You need to provide a valid user ID';
         if (typeof propertyID !== 'string') throw 'You need to provide a valid property ID';
@@ -27,7 +27,8 @@ const exportedMethods = {
         const newComment = {
             userID: userID,
             propertyID: propertyID,
-            comment: comment
+            comment: comment,
+            username: username
         }
             
         const newInsertInformation = await commentCollection.insertOne(newComment);
