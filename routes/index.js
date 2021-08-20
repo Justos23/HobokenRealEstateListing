@@ -16,7 +16,6 @@ const constructorMethod = (app) => {
     let listings = await propertyDb.aggregate(
         [ { $sample: { size: 3 } } ]
     ).toArray();
-    console.log(listings);
     return res.render('landing/landing', {
         title: 'Home',
         properties: listings
