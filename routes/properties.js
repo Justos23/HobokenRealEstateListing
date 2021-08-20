@@ -43,7 +43,6 @@ router.post('/list',async (req, res) => {
 router.get('/:_id', async (req, res) => {
     {
       const property = await propertiesData.ReadPropertyById(req.params._id);
-      console.log(property);
       res.render('properties/single', {property: property, title: property.streetname}) 
   };
 })
