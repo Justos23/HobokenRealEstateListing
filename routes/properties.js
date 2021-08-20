@@ -37,7 +37,6 @@ router.post('/list',async (req, res) => {
     if (location) {
         filtered = filtered.filter(x => x.streetname == location);
     }
-    console.log(filtered);
     return res.render('properties/list',{properties: filtered});
 })
 
