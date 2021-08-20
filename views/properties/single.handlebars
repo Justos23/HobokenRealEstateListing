@@ -24,4 +24,20 @@
       <dd>{{property.Seller}}</dd>
     </dl>
     <a href="/properties/list"> &#8592; Back</a>
-    </div>
+  </div>
+  <div>
+    <h2>Comments</h2>
+    {{#if comments.length}}
+    <ul>
+      {{#each comments}}
+      <li>"{{this.comment}}"</li>
+      {{/each}}
+    </ul>
+    {{else}}
+    <p>No comments yet!</p>
+    {{/if}}
+    <form method= "POST" action="/properties/{{property._id}}" id="comment-form">
+      <input type="comment" name="comment" id="comment" placeholder="Comment here"/> 
+      <input type="submit" class="submitbutton-form" value="Submit">
+    </form>
+  </div>

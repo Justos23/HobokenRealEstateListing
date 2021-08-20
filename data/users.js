@@ -5,7 +5,6 @@ const users = mongoCollections.users;
 const bcrypt = require('bcrypt');
 //const bcrypt = require('bcryptjs');
 const saltRounds = 16;
-const commentsData = require('./comments');
 
 const exportedMethods = {
     async ReadUserById(id) {
@@ -56,6 +55,7 @@ const exportedMethods = {
           email: email,
           phoneNumber: tel,
           age: age,
+          comments: []
         };
     
         const newInsertInformation = await userCollection.insertOne(newUser);
@@ -65,12 +65,12 @@ const exportedMethods = {
       },
 
       async addComment(userId,id) {
-        let user = await this.ReadUserById(userId);
         const userDb = await users();
         const commentDb = await comments();
+        const comment = await commentDb.findOne({_id: ObjectId(id)});
         const info = await userDb.updateOne(
-          {_id: userId},
-          {$addToSet: {comments: await commentsData.findOne({_id: id})}}
+          {_id: ObjectId(userId)},
+          {$addToSet: {comments: comment}}
         )
         if (!info.matchedCount && !info.modifiedCount) {
           throw 'User comments update failed';

@@ -3,8 +3,10 @@ const { ObjectId } = require('mongodb');
 const router = express.Router();
 const data = require('../data');
 const mongoCollections = require('../config/mongoCollections');
+const { comments } = require('../config/mongoCollections');
 const properties = mongoCollections.properties;
-const propertiesData = data.properties; 
+const propertiesData = data.properties;
+const commentsData = data.comments;
 
 router.get('/filters', async (req, res) =>{
     res.render('properties/filters', {
@@ -43,8 +45,18 @@ router.post('/list',async (req, res) => {
 router.get('/:_id', async (req, res) => {
     {
       const property = await propertiesData.ReadPropertyById(req.params._id);
-      res.render('properties/single', {property: property, title: property.streetname}) 
+      res.render('properties/single', {property: property, title: property.streetname, comments: property.comments}) 
   };
+})
+
+router.post('/:_id', async (req, res) => {
+    if (req.session.user) {
+        const {comment} = req.body;
+        const commentInfo = await commentsData.CreateComment(req.session.user._id,req.params._id,comment);
+        return res.redirect(`/properties/${req.params._id}`)
+    } else {
+        return res.status(401).redirect('../users/signup');
+    }
 })
 
 module.exports = router; 
