@@ -1,0 +1,43 @@
+<a href="/"> &#8592; Home</a>
+
+
+<h1>{{title}} Property</h1>
+<article class="properties">
+  <div>
+    {{!-- <img alt= "{{show.name}}" src= "{{show.image.medium}}"/> --}}
+    <dl>
+      <dt>Sell Type:</dt>
+      <dd>{{property.sellType}}</dd>
+      <dt>Type of Home:</dt>
+      <dd>{{property.homeType}}</dd>
+      <dt>Price:</dt>
+      <dd>${{property.price}}</dd>
+      <dt>Number of Bedrooms:</dt>
+      <dd>{{property.numofBedrooms}}</dd>
+      <dt>Number of Bathrooms:</dt>
+      <dd>{{property.numofBathrooms}}</dd>
+      <dt>Square Feet:</dt>
+      <dd>{{property.squareFeet}}</dd>  
+      <dt>Street Name:</dt>
+      <dd>{{property.streetname}}</dd>
+      <dt>Seller:</dt>
+      <dd>{{property.Seller}}</dd>
+    </dl>
+    <a href="/properties/list"> &#8592; Back</a>
+  </div>
+  <div>
+    <h2>Comments</h2>
+    {{#if comments.length}}
+    <ul>
+      {{#each comments}}
+      <li>{{this.username}}: "{{this.comment}}"</li>
+      {{/each}}
+    </ul>
+    {{else}}
+    <p>No comments yet!</p>
+    {{/if}}
+    <form method= "POST" action="/properties/{{property._id}}" id="comment-form">
+      <input type="comment" name="comment" id="comment" placeholder="Comment here"/> 
+      <input type="submit" class="submitbutton-form" value="Submit">
+    </form>
+  </div>

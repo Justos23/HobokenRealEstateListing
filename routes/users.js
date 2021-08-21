@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const data = require('../data');
 const bcrypt = require('bcrypt');
+//const bcrypt = require('bcryptjs');
 const saltRounds = 16;
 //const verifier = require('../data/verify');
 //const xss = require('xss')
