@@ -26,16 +26,16 @@ router.post('/list',async (req, res) => {
         filtered = filtered.filter(x => x.homeType == homeType);
     }
     if (price) {
-        filtered = filtered.filter(x => x.price < price);
+        filtered = filtered.filter(x => x.price <= price);
     }
     if (numofBedrooms) {
-        filtered = filtered.filter(x => x.numofBedrooms > numofBedrooms);
+        filtered = filtered.filter(x => x.numofBedrooms >= numofBedrooms);
     }
     if (numofBathrooms) {
-        filtered = filtered.filter(x => x.numofBathrooms > numofBathrooms);
+        filtered = filtered.filter(x => x.numofBathrooms >= numofBathrooms);
     }
     if (squareFeet) {
-        filtered = filtered.filter(x => x.squareFeet > squareFeet);
+        filtered = filtered.filter(x => x.squareFeet >= squareFeet);
     }
     if (location) {
         filtered = filtered.filter(x => x.streetname == location);
