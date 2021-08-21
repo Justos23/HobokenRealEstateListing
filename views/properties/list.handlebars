@@ -1,17 +1,22 @@
 <section>
+  <a href="/">&#8592; Home</a>
+  <br>
   <h1>Properties</h1>
   {{#if properties.length}}
   {{#each properties}}  
+  <br>
+  <br>
     <article class="properties">
-      <h2><a href="/properties/{{this._id}}">{{this.streetname}}</a></h2>
-      <p>{{this.homeType}} For {{this.sellType}}</p>
-      <p>${{this.price}}</p>
-      <p>{{this.squareFeet}} Square Feet</p>
-      <p>Bedrooms/Bathrooms: {{this.numofBedrooms}}/{{this.numofBathrooms}}</p>
+      <a href="/properties/{{this._id}}"><h2>{{this.title}}</h2>
+        <img src="/public/Sample_house4.png" style="width:200px; height:180px;">
+        <p class="property-list-info">{{homeType}} - ${{price}} ({{sellType}}): {{numofBedrooms}} beds {{numofBathrooms}} baths</p>
+      </a>
     </article>
+    
   {{/each}}
   {{else}}
     <p>No properties found with those filters!</p>
   {{/if}}
+  <br>
   <a href='/properties/filters'>Search Again</a>
 </section>

@@ -11,6 +11,13 @@
       </div>
       <br/>
       <br/>
+       <label>
+        Property Title:
+        <input type = "text" name="title" id="title" value="{{property.title}}" placeholder="Enter the title for your new property"/>
+      </label>
+
+      <br/>
+      <br/>
       <label>
         Sell Type:
         <select value="{{property.sellType}}" id="sellType" name="sellType" placeholder="Select">
@@ -90,8 +97,17 @@
       <br/>
       <br/>
 
+      <label>
+        Bio:
+        <br>
+        <textarea id="bio" name="bio" value="{{property.bio}}" rows="5" cols="33" placeholder="Tell us more about your property"></textarea>
+      </label>
+
+      <br/>
+      <br/>
+
       {{#each errors}}
-              <div class = "error">{{this}}</div>
+              <div class = "error" hidden>{{this}}</div>
       {{/each}}
       <br>
       <center>
