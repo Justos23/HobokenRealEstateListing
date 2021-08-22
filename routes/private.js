@@ -74,20 +74,14 @@ router.get('/profile', async (req, res) =>{
 })
 
 
-router.delete('/removeproperty/:_id?_method=DELETE', async (req, res) => {
+router.delete('/removeproperty/:_id', async (req, res) => {
     if (!req.params._id) {
       res.status(400).json({ error: 'You must Supply an ID to delete' });
       return;
     }
     try {
-      await PropertyData.ReadPropertyById(req.params._id);
-    } catch (e) {
-      res.status(404).json({ error: 'Property not found' });
-      return;
-    }
-    try {
       await PropertyData.remove(req.params._id);
-      alert("Property removed successfully!");
+      console.log("Property removed successfully!");
     } catch (e) {
       res.status(500).json({ error: 'Property could not be deleted' });
     }
@@ -95,21 +89,15 @@ router.delete('/removeproperty/:_id?_method=DELETE', async (req, res) => {
 
 
 
-router.delete('/soldproperty/:_id?_method=DELETE', async (req, res) => {
+router.delete('/propertysold/:_id', async (req, res) => {
     
     if (!req.params._id) {
         res.status(400).json({ error: 'You must Supply an ID to complete sell' });
         return;
       }
       try {
-        await PropertyData.ReadPropertyById(req.params._id);
-      } catch (e) {
-        res.status(404).json({ error: 'Property not found' });
-        return;
-      }
-      try {
-        await PropertyData.remove(req.params._id);
-        alert("Property sold successfully!");
+        await PropertyData.sold(req.params._id);
+       console.log("Property sold successfully!");
       } catch (e) {
         res.status(500).json({ error: 'Property could not be sold' });
       }

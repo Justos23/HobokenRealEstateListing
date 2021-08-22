@@ -60,36 +60,42 @@ const exportedMethods = {
           //return await this.ReadPropertyById(newId);
         },
 
-    async remove(id){
-      if(!id) throw `You need to provide a valid id`;
-  
-       removed_property = await this.ReadPropertyById(id);
-          
-      const propertyCollection = await properties();
-      const deletionInfo = await propertyCollection.deleteOne({_id: id});
-  
-          
-  
-      if (deletionInfo.deletedCount === 0) {
-          throw `Could not delete property with id of ${id}`;
-      }
-    },
-
-
     async sold(id){
-      if(!id) throw `You need to provide a valid id`;
-  
-       sold_property = await this.ReadPropertyById(id);
-          
+      if (!id) throw 'You need to provide an id';
       const propertyCollection = await properties();
-      const deletionInfo = await propertyCollection.deleteOne({_id: id});
-  
-          
-  
-      if (deletionInfo.deletedCount === 0) {
-          throw `Could not add property as sold with id of ${id}`;
+      try {
+        property = await this.ReadPropertyById(id);
+      } catch (e) {
+        console.log(e);
       }
+      const deletionInfo = await propertyCollection.deleteOne({ _id: ObjectId(id) });
+      if (deletionInfo.deletedCount === 0) {
+        throw `Could not add property as sold`;
+      }else{
+        alert('Property successfully sold')
+      }
+
     },
+
+
+    async remove(id){
+      if (!id) throw 'You need to provide an id';
+      const propertyCollection = await properties();
+      try {
+        property = await this.ReadPropertyById(id);
+      } catch (e) {
+        console.log(e);
+      }
+      const deletionInfo = await propertyCollection.deleteOne({ _id: ObjectId(id) });
+      if (deletionInfo.deletedCount === 0) {
+        throw `Could not add property as sold`;
+      }else{
+        alert('Property successfully sold')
+      }
+
+    },
+
+
 
     async addComment(propertyId,id) {
       const propertyDb = await properties();
