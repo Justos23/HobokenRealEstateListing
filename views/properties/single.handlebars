@@ -1,7 +1,7 @@
 <a href="/"> &#8592; Home</a>
 
 
-<h1>{{title}} Property</h1>
+<h1>{{property.title}} Property</h1>
 <article class="properties">
   {{#if isSeller}}
   {{else}}
@@ -27,7 +27,7 @@
       <dt>Seller:</dt>
       <dd>{{property.Seller}}</dd>
     </dl>
-    <a href="javascript:history.go(-1)"> &#8592; Back</a>
+
   </div>
   <div>
     <h2>Comments</h2>
@@ -46,18 +46,20 @@
           Add a comment:
           <br>
         <textarea type="comment" name="comment" id="comment" placeholder="Comment here"></textarea>
-        <input type="submit" class="submitbutton-form" value="Submit">
+        <input type="submit" class="commmentsubmitbutton-form" value="Submit">
       </label>
     </form>
-
+<br>
+<br>
+    <a href="javascript:history.go(-1)"> &#8592; Back</a>
 <br>
 <br>
     {{#if isSeller}}
-    <form method = "GET">
-      <button onclick="location.href='/private/removeproperty/{{property._id}}'" type="submit" class="remove-btn">Remove Property</button>
+    <form method = "post" action="/private/removeproperty/{{property._id}}">
+      <button type="submit" class="remove-btn">Remove Property</button>
       <input name='_method' value="DELETE" hidden/>
     </form>
-    <form method = "GET" action="/private/propertysold/{{property._id}}">
+    <form method = "post" action="/private/propertysold/{{property._id}}">
       <button type="submit" class="sold-btn">Sold</button>
 
       <input name= '_method' value="DELETE" hidden/>
