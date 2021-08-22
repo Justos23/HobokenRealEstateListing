@@ -80,8 +80,10 @@ router.delete('/removeproperty/:_id', async (req, res) => {
       return;
     }
     try {
-      await PropertyData.remove(req.params._id);
+      await PropertyData.remove(req.params._id, req.session.user.username);
       console.log("Property removed successfully!");
+      req.session.user= CurrentUser;
+      res.redirect("/");
     } catch (e) {
       res.status(500).json({ error: 'Property could not be deleted' });
     }
@@ -96,8 +98,10 @@ router.delete('/propertysold/:_id', async (req, res) => {
         return;
       }
       try {
-        await PropertyData.sold(req.params._id);
-       console.log("Property sold successfully!");
+        await PropertyData.sold(req.params._id, req.session.user.username);
+      console.log("Property sold successfully!");
+      req.session.user= CurrentUser;
+      res.redirect("/");
       } catch (e) {
         res.status(500).json({ error: 'Property could not be sold' });
       }
