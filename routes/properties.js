@@ -17,6 +17,7 @@ router.get('/filters', async (req, res) =>{
 
 router.post('/list',async (req, res) => {
     const {sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, location} = req.body;
+    console.log({sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, location});
     const propertyDb = await properties();
     let filtered = await propertyDb.find({}).toArray();
     if (sellType) {
@@ -26,16 +27,16 @@ router.post('/list',async (req, res) => {
         filtered = filtered.filter(x => x.homeType == homeType);
     }
     if (price) {
-        filtered = filtered.filter(x => x.price <= price);
+        filtered = filtered.filter(x => parseInt(x.price) <= parseInt(price));
     }
     if (numofBedrooms) {
-        filtered = filtered.filter(x => x.numofBedrooms >= numofBedrooms);
+        filtered = filtered.filter(x => parseInt(x.numofBedrooms) >= parseInt(numofBedrooms));
     }
     if (numofBathrooms) {
-        filtered = filtered.filter(x => x.numofBathrooms >= numofBathrooms);
+        filtered = filtered.filter(x => parseInt(x.numofBathrooms) >= parseInt(numofBathrooms));
     }
     if (squareFeet) {
-        filtered = filtered.filter(x => x.squareFeet >= squareFeet);
+        filtered = filtered.filter(x => parseInt(x.squareFeet) >= parseInt(squareFeet));
     }
     if (location) {
         filtered = filtered.filter(x => x.streetname == location);
