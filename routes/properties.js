@@ -46,9 +46,16 @@ router.post('/list',async (req, res) => {
 router.get('/:_id', async (req, res) => {
     {
       const property = await propertiesData.ReadPropertyById(req.params._id);
-      res.render('properties/single', {property: property, title: property.streetname, comments: property.comments}) 
+      if(req.session.user){
+        var isSeller = (property.Seller == req.session.user.username) ? true :false;    
+      }else{
+          isSeller = false;
+      }
+        
+      res.render('properties/single', {property: property, title: property.streetname, comments: property.comments, isSeller : isSeller}) 
   };
 })
+
 
 router.post('/:_id', async (req, res) => {
     if (req.session.user) {
