@@ -15,6 +15,15 @@ const exportedMethods = {
         if (!user) throw 'User not found';
         return user;
       },
+    
+      async ReadUserByUsername(username) {
+        if (!username) throw 'You need to provide an id'
+        const userCollection = await users();
+        const user = await userCollection.findOne({ username: username });
+    
+        if (!user) throw 'User not found';
+        return user;
+      },
 
       async getAllUsers(){
         const userCollection = await users();
