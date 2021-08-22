@@ -60,7 +60,7 @@ const exportedMethods = {
           //return await this.ReadPropertyById(newId);
         },
 
-    async sold(id){
+    async sold(id, seller_username){
       if (!id) throw 'You need to provide an id';
       const propertyCollection = await properties();
       try {
@@ -71,14 +71,20 @@ const exportedMethods = {
       const deletionInfo = await propertyCollection.deleteOne({ _id: ObjectId(id) });
       if (deletionInfo.deletedCount === 0) {
         throw `Could not add property as sold`;
-      }else{
-        alert('Property successfully sold')
       }
+        const userCollection = await users();
+        const updateInfo = await userCollection.updateOne(
+        { "Properties._id": ObjectId(id) },
+        { $pull: { Properties: { _id: ObjectId(id) } } }
+        );
+        if (!updateInfo.matchedCount && !updateInfo.modifiedCount)
+          throw 'Update failed';
+        CurrentUser = await userCollection.findOne({ username: seller_username});
+        return CurrentUser;
+      },
 
-    },
 
-
-    async remove(id){
+    async remove(id, seller_username){
       if (!id) throw 'You need to provide an id';
       const propertyCollection = await properties();
       try {
@@ -89,10 +95,17 @@ const exportedMethods = {
       const deletionInfo = await propertyCollection.deleteOne({ _id: ObjectId(id) });
       if (deletionInfo.deletedCount === 0) {
         throw `Could not add property as sold`;
-      }else{
-        alert('Property successfully sold')
       }
 
+      const userCollection = await users();
+      const updateInfo = await userCollection.updateOne(
+      { "Properties._id": ObjectId(id) },
+      { $pull: { Properties: { _id: ObjectId(id) } } }
+      );
+      if (!updateInfo.matchedCount && !updateInfo.modifiedCount)
+        throw 'Update failed';
+      CurrentUser = await userCollection.findOne({ username: seller_username});
+      return CurrentUser;
     },
 
 
