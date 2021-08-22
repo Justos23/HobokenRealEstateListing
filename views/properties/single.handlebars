@@ -3,6 +3,10 @@
 
 <h1>{{title}} Property</h1>
 <article class="properties">
+  {{#if isSeller}}
+  {{else}}
+      <button onclick="AddFav()" id="favbtn" class="addtofav" >Add to favorites</button>
+  {{/if}}
   <div>
     {{!-- <img alt= "{{show.name}}" src= "{{show.image.medium}}"/> --}}
     <dl>
@@ -36,8 +40,27 @@
     {{else}}
     <p>No comments yet!</p>
     {{/if}}
-    <form method= "POST" action="/properties/{{property._id}}" id="comment-form">
-      <input type="comment" name="comment" id="comment" placeholder="Comment here"/> 
-      <input type="submit" class="submitbutton-form" value="Submit">
+
+    <form method= "POST" action="/properties/{{property._id}}" id="comment-form">    
+      <label>
+          Add a comment:
+          <br>
+        <textarea type="comment" name="comment" id="comment" placeholder="Comment here"></textarea>
+        <input type="submit" class="submitbutton-form" value="Submit">
+      </label>
     </form>
+
+<br>
+<br>
+    {{#if isSeller}}
+    <form method = "GET">
+      <button onclick="location.href='/private/removeproperty/{{property._id}}'" type="submit" class="remove-btn">Remove Property</button>
+      <input name='_method' value="DELETE" hidden/>
+    </form>
+    <form method = "GET" action="/private/propertysold/{{property._id}}">
+      <button type="submit" class="sold-btn">Sold</button>
+
+      <input name= '_method' value="DELETE" hidden/>
+    </form>
+    {{/if}}
   </div>
