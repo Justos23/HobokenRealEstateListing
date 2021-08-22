@@ -17,7 +17,6 @@ router.get('/filters', async (req, res) =>{
 
 router.post('/list',async (req, res) => {
     const {sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, location} = req.body;
-    console.log({sellType, homeType, price, numofBedrooms, numofBathrooms, squareFeet, location});
     const propertyDb = await properties();
     let filtered = await propertyDb.find({}).toArray();
     if (sellType) {
