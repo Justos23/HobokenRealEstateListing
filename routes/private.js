@@ -71,6 +71,7 @@ router.get('/addFavorites/:_id', async (req, res) =>{
     await PropertyData.addFavorites(req.params._id, req.session.user.username);
     console.log("Property added to favorites successfully!");
     req.session.user= CurrentUser;
+    res.redirect("/");
   } catch (e) {
     res.status(500).json({ error: 'Property could not be deleted' });
   }
