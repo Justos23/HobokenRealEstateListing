@@ -3,6 +3,7 @@ const router = express.Router();
 const data = require('../data');
 const UserData = data.users;
 const PropertyData= data.properties;
+const xss = require('xss');
 
 router.get('/addProperty',  async (req, res) =>{
     const userData = req.session.user;
@@ -16,15 +17,15 @@ router.get('/addProperty',  async (req, res) =>{
 router.post('/addProperty', async (req, res) =>{
     const userData = req.session.user;
     let propertyInfo = req.body;
-    const title = (propertyInfo.title);
-    const sellType = (propertyInfo.sellType);
-    const homeType = (propertyInfo.homeType);
-    const price = (propertyInfo.price);
-    const numofBedrooms = (propertyInfo.numofBedrooms);
-    const numofBathrooms = (propertyInfo.numofBathrooms);
-    const squareFeet = (propertyInfo.squareFeet);
-    const streetname = (propertyInfo.streetname);
-    const bio = (propertyInfo.bio);
+    const title = xss(propertyInfo.title);
+    const sellType = xss(propertyInfo.sellType);
+    const homeType = xss(propertyInfo.homeType);
+    const price = xss(propertyInfo.price);
+    const numofBedrooms = xss(propertyInfo.numofBedrooms);
+    const numofBathrooms = xss(propertyInfo.numofBathrooms);
+    const squareFeet = xss(propertyInfo.squareFeet);
+    const streetname = xss(propertyInfo.streetname);
+    const bio = xss(propertyInfo.bio);
 
     errors = [];
 

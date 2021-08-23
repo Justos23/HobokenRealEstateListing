@@ -15,7 +15,6 @@ async function main() {
   //const user5 = await users.CreateUser({ "userFirstName": 'Bob',  "userLastName": 'Green'}, "Bobby", "greenbobby@gmail.com", "2017969430", 30, "s8v1j4i2f1sz541s4x1c4");
 
   const property1 = await properties.CreateProperty("JOJO123", "Greatest view of Court Street", "Rent", "Apartment", 2500, 2, 1, 1000, "Court Street", "Great location, near shops and restaurants, at affordable price!!!");
-  const review2 = await properties.CreateProperty("JaneDoe12", "Nicest House of Hoboken", "Buy", 'House', 250000, 4,3, 5000, "Washington Street", "Great location, with a huge backyard!");
   //const review3 = await properties.CreateProperty("This is ok", "Justin Depardieu", 3, "15/65/1849", "I seen it");
   //const review4 = await properties.CreateProperty("This is great not great", "Justin Depardieu", 2, "15/65/1849", "I did not enjoy it");
 
@@ -23,7 +22,7 @@ async function main() {
   
   console.log('Done seeding database');
 
-  //await db.serverConfig.close();
+  await db.serverConfig.close();
 }
 
 main();
