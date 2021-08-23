@@ -1,3 +1,6 @@
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
 <section>
   <a href="/">&#8592; Home</a>
 
@@ -7,7 +10,8 @@
 
       <div>
         <label for="image">Upload Image</label>
-        <input type="file" id="image" name="image" value="{{property.image}}" class="form-control-file" Content-Type: "multipart/form-data">
+        {{!-- <input type="file" id="image" name="image" value="{{property.image}}" class="form-control-file" Content-Type: "multipart/form-data"> --}}
+        <input type='file' onchange="readURL(this);" />
       </div>
       <br/>
       <br/>
@@ -117,3 +121,25 @@
       
     </form>
 </section>
+
+<script>
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.addEventListener(
+      "load",
+      function() {
+        var avatarImg = new Image();
+        var src = reader.result;
+        avatarImg.src = src;
+        document.getElementById("dataUrl").innerText = src;
+      },
+      false
+    );
+
+    const url = reader.readAsDataURL(input.files[0]);
+    console.log(url);
+  }
+}
+</script>
