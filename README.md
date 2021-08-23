@@ -15,7 +15,7 @@ And run 'npm start' to get a server and start using our website
 # Our website
 Our first page will be the landing page.
 A non-authenticated user will be able to view the filter page and the list of properties.
-Only a logged in, or authenicated, user will be able to list a property, and comment on other properties.
+Only a logged in, or authenticated, user will be able to list a property, and comment on other properties.
 In addition, an authenticated user will be able to view their own profile which includes information about them, any listed properties, and any properties they listed as favorite.
 
 GitHub Link
