@@ -34,13 +34,20 @@
       </dd> 
     <dt>Favorites :</dt> 
       <dd> 
-        <ul>
-          {{#each user.favorites}} 
-          <li>{{this}}</li>
+        <ol>
+          {{#each user.Favorites}} 
+          <li>
+            <div class="property-list">
+              <a href="/properties/{{this._id}}"><h2>{{this.title}}</h2>
+                <img src="/public/Sample_house4.png" style="width:200px; height:180px;">
+                <p class="property-list-info">{{homeType}} - ${{price}} ({{sellType}}): {{numofBedrooms}} beds {{numofBathrooms}} baths</p>
+             </a>
+            </div>
+          </li>
           {{else}}
           <p class="empty">You do not have any favorites yet</p>
           {{/each}}
-        </ul> 
+        </ol> 
       </dd>
 <br>
 <center>

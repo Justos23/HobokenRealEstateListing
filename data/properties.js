@@ -123,6 +123,18 @@ const exportedMethods = {
       }
       return await this.ReadPropertyById(propertyId);
     },
+
+    async addFavorites(propertyId, fav_username){
+      const userCollection = await users();
+      const propertyCollection = await properties();
+      const favProperty = await this.ReadPropertyById(propertyId);
+      const updateInfo = await userCollection.updateOne({ username: fav_username},{$push: { 'Favorites': favProperty} });
+    if (updateInfo.modifiedCount === 0){
+      throw `Could not add property to favorites successfully`;
+    }
+    CurrentUser = await userCollection.findOne({ username: fav_username});
+    return CurrentUser;
+    }
     
 };
 
