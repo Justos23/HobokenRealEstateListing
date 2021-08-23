@@ -62,6 +62,21 @@ router.post('/addProperty', async (req, res) =>{
     }
 });
 
+router.get('/addFavorites/:_id', async (req, res) =>{
+  if(!req.session.user){
+    console.log("You need to be logged in to add to favorites");
+    return;
+  }
+  try {
+    await PropertyData.addFavorites(req.params._id, req.session.user.username);
+    console.log("Property added to favorites successfully!");
+    req.session.user = CurrentUser;
+  } catch (e) {
+    res.status(500).json({ error: 'Property could not be deleted' });
+  }
+});
+
+
 router.get('/profile', async (req, res) =>{
     if(req.session.user){
         const CurrentUser = req.session.user;
