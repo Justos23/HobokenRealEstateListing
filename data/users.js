@@ -50,7 +50,7 @@ const exportedMethods = {
         allUsers.forEach(user => USERNAME.push(user.username));
         if(EMAILS.includes(email_lowerCase)) throw `This email already exists`;
 
-        if(USERNAME.includes(username_lowerCase)) throw `This email already exists`;
+        if(USERNAME.includes(username_lowerCase)) throw `This username already exists`;
 
         const hashedPassword = await bcrypt.hash(password, saltRounds);
     
